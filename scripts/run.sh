@@ -26,6 +26,9 @@ case "$command" in
   test)
     go test -v ./...
     ;;
+  docker)
+    docker build -t xkokavecs/ambulance-wl-webapi:local-build -f "${ProjectRoot}/build/docker/Dockerfile" .
+    ;;
   openapi)
     docker run --rm -ti -v "${ProjectRoot}:/local" openapitools/openapi-generator-cli generate -c /local/scripts/generator-cfg.yaml
     ;;
